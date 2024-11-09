@@ -7,20 +7,21 @@ import {
   Routes,
 } from "react-router-dom";
 import Home from "./pages/home.js";
-
-import Protected from "./components/protected.js";
+import UserPage from "./pages/userPage.js";
 
 const App = () => {
   const [isLogin, setLogin] = useState(false);
+  const [keycloakInstance, setKeycloakInstance] = useState();
+
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" exact element={<Home setLogin={setLogin} />} />
+          <Route path="/" exact element={<Home setLogin={setLogin} setKeycloakInstance={setKeycloakInstance} keycloakInstance={keycloakInstance} />} />
           <Route
-            path="/protected"
+            path="/userPage"
             exact
-            element={isLogin ? <Protected /> : <Navigate to="/" />}
+            element={isLogin ? <UserPage setKeycloakInstance={setKeycloakInstance} keycloakInstance={keycloakInstance} /> : <Navigate to="/" />}
           />
         </Routes>
       </Router>
