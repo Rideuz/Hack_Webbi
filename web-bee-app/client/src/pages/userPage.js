@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserPage = ({ setKeycloakInstance, keycloakInstance }) => {
+const UserPage = ({ keycloakInstance }) => {
   console.log(keycloakInstance);
   const handleLogout = async () => {
     try {

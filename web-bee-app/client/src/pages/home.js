@@ -8,7 +8,7 @@ const keycloak = new Keycloak({
   clientId: "myclient", // ID клиента
 });
 
-const Home = ({ setLogin, setKeycloakInstance, keycloakInstance, setToken }) => {
+const Home = ({ setLogin, setKeycloakInstance, keycloakInstance, setToken, setAdmin, isAdmin }) => {
   const navigate = useNavigate();
   const isRun = useRef(false);
   useEffect(() => {
@@ -22,7 +22,11 @@ const Home = ({ setLogin, setKeycloakInstance, keycloakInstance, setToken }) => 
         setLogin(authenticated);
         if (authenticated) {
           setToken(keycloak.token);
-          navigate("/userPage");
+          const roles = keycloak.realmAccess.roles;
+          const clientRoles = keycloak.resourceAccess['myclient']?.roles || [];
+          setAdmin(clientRoles.includes('secret-admin'));
+          if (clientRoles.includes('secret-admin')) navigate("/adminPage");
+          else navigate("/userPage");
         }
       });
   }, []);
