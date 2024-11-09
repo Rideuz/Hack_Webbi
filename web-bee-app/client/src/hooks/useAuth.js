@@ -15,9 +15,8 @@ const useAuth = () => {
     if (isRun.current) return;
 
     isRun.current = true;
-    // keycloak?.init({ onLoad: "login-required" }).then(() => setLogin(true));
     keycloak
-      .init({ onLoad: "login-required", checkLoginIframe: false })
+      .init({ onLoad: "check-sso", checkLoginIframe: false })
       .then((authenticated) => {
         setKeycloakInstance(keycloak);
         setLogin(authenticated);
