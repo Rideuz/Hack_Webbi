@@ -16,7 +16,7 @@ const App = () => {
   const [keycloakInstance, setKeycloakInstance] = useState();
   const [token, setToken] = useState();
   const [isAdmin, setAdmin] = useState(false);
-  
+
   return (
     <>
       <Router>
@@ -30,7 +30,7 @@ const App = () => {
           <Route
             path="/adminPage"
             exact
-            element={isAdmin ? <AdminPage keycloakInstance={keycloakInstance} /> : <Navigate to="/" />}
+            element={isAdmin ? <AdminPage keycloakInstance={keycloakInstance} setToken={setToken} /> : <Navigate to="/" />}
           />
         </Routes>
       </Router>
