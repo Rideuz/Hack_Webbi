@@ -48,7 +48,6 @@ import useAuth from "./hooks/useAuth.js";
 
 const App = () => {
   const isLogin = useAuth();
-
   return isLogin ? <Protected /> : <Public />;
   // const { keycloak, initialized } = useKeycloak();
   // console.log("Keycloak instance:", keycloak);
