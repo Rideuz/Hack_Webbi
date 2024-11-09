@@ -8,10 +8,9 @@ const keycloak = new Keycloak({
   clientId: "myclient", // ID клиента
 });
 
-const Home = ({ setLogin, setKeycloakInstance, keycloakInstance }) => {
+const Home = ({ setLogin, setKeycloakInstance, keycloakInstance, setToken }) => {
   const navigate = useNavigate();
   const isRun = useRef(false);
-  const [token, setToken] = useState();
   useEffect(() => {
     if (isRun.current) return;
 

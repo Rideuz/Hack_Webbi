@@ -12,16 +12,17 @@ import UserPage from "./pages/userPage.js";
 const App = () => {
   const [isLogin, setLogin] = useState(false);
   const [keycloakInstance, setKeycloakInstance] = useState();
+  const [token, setToken] = useState();
 
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" exact element={<Home setLogin={setLogin} setKeycloakInstance={setKeycloakInstance} keycloakInstance={keycloakInstance} />} />
+          <Route path="/" exact element={<Home setLogin={setLogin} setKeycloakInstance={setKeycloakInstance} keycloakInstance={keycloakInstance} setToken={setToken} />} />
           <Route
             path="/userPage"
             exact
-            element={isLogin ? <UserPage setKeycloakInstance={setKeycloakInstance} keycloakInstance={keycloakInstance} /> : <Navigate to="/" />}
+            element={isLogin ? <UserPage setKeycloakInstance={setKeycloakInstance} keycloakInstance={keycloakInstance}/> : <Navigate to="/" />}
           />
         </Routes>
       </Router>
