@@ -8,11 +8,11 @@ const keycloak = new Keycloak({
   clientId: "myclient", // ID клиента
 });
 
-const Home = () => {
+const Home = ({ setLogin }) => {
+  const [keycloakInstance, setKeycloakInstance] = useState();
   const navigate = useNavigate();
   const isRun = useRef(false);
-  const [isLogin, setLogin] = useState(false);
-  const [keycloakInstance, setKeycloakInstance] = useState();
+  const [token, setToken] = useState();
   useEffect(() => {
     if (isRun.current) return;
 
@@ -23,7 +23,8 @@ const Home = () => {
         setKeycloakInstance(keycloak);
         setLogin(authenticated);
         if (authenticated) {
-          navigate("/protected"); // Replace with your desired route
+          setToken(keycloak.token);
+          navigate("/protected", token);
         }
       });
   }, []);
