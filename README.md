@@ -21,7 +21,7 @@ You should see keycloak console
 ![image](https://github.com/user-attachments/assets/de47afcb-3aea-4871-bb67-ab151570761a)
 
 ## Configuring keycloak
-Create new Realm by clicking on realm dropdown menu on the left corner, then click _create realm_, name it my realm, then click create button.
+Create new Realm by clicking on realm dropdown menu on the left corner, then click _create realm_, name it myrealm, then click create button.
 
 After that, add new client, follow image:
 ![image](https://github.com/user-attachments/assets/89221d0d-8048-49ba-b467-0789141fdaf4)
