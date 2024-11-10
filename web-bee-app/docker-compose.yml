@@ -12,3 +12,13 @@ services:
       - CHOKIDAR_USEPOLLING=true
     stdin_open: true
     tty: true
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./keycloak-theme/my-custom-theme:/opt/keycloak/themes/my-custom-theme
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    command: start-dev  
